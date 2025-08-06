@@ -30,7 +30,7 @@ services:
     build: ./frontend
     container_name: blog-generator-frontend
     ports:
-      - "3003:3003"
+      - "3002:3002"
     environment:
       - NEXT_PUBLIC_API_URL=http://backend:3001
     depends_on:

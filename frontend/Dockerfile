@@ -1,4 +1,4 @@
-# Use Node.js 20 for building
+﻿# Use Node.js 20 for building
 FROM node:20-alpine AS builder
 
 WORKDIR /app
@@ -32,9 +32,9 @@ RUN chown -R nextjs:nodejs /app
 
 USER nextjs
 
-EXPOSE 3003
+EXPOSE 3002
 
-ENV PORT 3003
+ENV PORT 3002
 ENV HOSTNAME "0.0.0.0"
 
 CMD ["node", "server.js"]

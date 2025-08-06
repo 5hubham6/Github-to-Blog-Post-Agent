@@ -4,6 +4,8 @@ Was thinking about writing a blog post for one of my projects and realized I was
 
 ## What it does
 
+![Demo GIF](assets/demo.gif)
+
 ```
 📂 GitHub URL  →  🤖 AI Analysis  →  📝 Blog Post  →  💾 Export
      |                |                |              |
@@ -45,7 +47,7 @@ cp .env.template .env
 
 docker-compose up
 ```
-Then go to http://localhost:8000
+Then go to http://localhost:3002
 
 ### Manual setup
 ```bash
@@ -130,7 +132,7 @@ Copy `.env.template` to `.env` and add your keys.
 ## How to use it
 
 ### Web Interface
-1. Open http://localhost:8000
+1. Open http://localhost:3002
 2. Paste any GitHub repository URL
 3. Watch progress as AI analyzes the code
 4. Download the generated blog post
@@ -138,10 +140,10 @@ Copy `.env.template` to `.env` and add your keys.
 ### Direct API
 ```bash
 # Health check
-curl http://localhost:8000/health
+curl http://localhost:3001/health
 
 # Generate blog post
-curl -X POST http://localhost:8000/generate \
+curl -X POST http://localhost:3001/api/generate \
   -H "Content-Type: application/json" \
   -d '{"repo_url": "https://github.com/user/repo"}'
 ```
