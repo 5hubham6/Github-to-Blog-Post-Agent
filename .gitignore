@@ -1,0 +1,101 @@
+# 🔒 SECURITY-FIRST .GITIGNORE 🔒
+# This file ensures NO secrets ever get committed to Git
+
+# ===== CRITICAL SECURITY EXCLUSIONS =====
+# Environment variables and secrets (NEVER COMMIT THESE!)
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+*.env
+**/secrets.json
+**/config/secrets.json
+
+# API Keys and authentication files
+**/api-keys.json
+**/credentials.json
+**/auth.json
+**/*key*.json
+**/*secret*.json
+**/*token*.json
+
+# Certificate and key files
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.pfx
+
+# ===== PYTHON EXCLUSIONS =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===== NODE.JS EXCLUSIONS =====
+node_modules/
+package-lock.json
+yarn.lock
+.npm
+.yarn
+
+# ===== NEXT.JS SPECIFIC =====
+.next/
+.swc/
+out/
+
+# ===== BUILD & DISTRIBUTION =====
+dist/
+build/
+*.tsbuildinfo
+.turbo
+
+# ===== GENERATED DATA =====
+data/repos/*.md
+data/blogs/*.md
+!data/repos/.gitkeep
+!data/blogs/.gitkeep
+
+# ===== LOGS AND TEMPORARY FILES =====
+*.log
+*.tmp
+*.temp
+logs/
+temp/
+
+# ===== IDE AND OS FILES =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ===== DATABASE FILES =====
+*.db
+*.sqlite
+*.sqlite3
+
+# ===== BACKUP FILES =====
+*.bak
+*.backup
+*.old
+
+# ===== DOCKER EXCLUSIONS =====
+.dockerignore
+docker-compose.override.yml
+.env.docker.local
+
+# ===== TESTING =====
+coverage/
+*.coverage
+.pytest_cache/
