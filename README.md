@@ -1,6 +1,6 @@
 # GitHub to Blog Agent
 
-Had the idea to automatically convert GitHub repos into blog posts using AI - seemed like a good way to document projects without manually writing everything. Started simple but ended up adding multiple AI providers and a modern frontend along the way.
+Was thinking about writing a blog post for one of my projects and realized I was just going to describe what the code already shows. Figured AI could probably do this better and faster than me manually writing everything out. Started as a simple script but kept adding features as I needed them.
 
 ## What it does
 
@@ -45,7 +45,7 @@ cp .env.template .env
 
 docker-compose up
 ```
-Then go to http://localhost:3000
+Then go to http://localhost:8000
 
 ### Manual setup
 ```bash
@@ -70,53 +70,39 @@ npm run dev
                                     ## Current Status
 
 ### ✅ What's Working Right Now
-- Web interface for generating blog posts from GitHub URLs
-- Multi-AI provider support (Groq, HuggingFace, OpenAI)
-- Automatic fallback when one provider fails
-- Real-time progress updates with WebSocket
-- Modern Next.js frontend with 3D animations
-- Docker containerization for easy deployment
-- Export functionality (Markdown, HTML, PDF)
+- Basic web interface for pasting GitHub URLs
+- AI provider integration (Groq, HuggingFace, OpenAI)
+- Fallback system when one provider fails
+- Real-time updates during processing
+- Simple Next.js frontend
+- Docker setup for deployment
+- Markdown export
 
-### 🏗️ Production Ready Infrastructure
-- **Security**: Enterprise-grade headers, CORS, no hardcoded secrets
-- **Docker**: Multi-stage builds, health checks, production config
-- **Documentation**: Security audit, deployment guides
-- **Frontend**: TypeScript, Tailwind CSS, responsive design
+### 🏗️ Infrastructure I've Set Up
+- **Security**: Basic headers, CORS, environment variables
+- **Docker**: Container setup with health checks
+- **Documentation**: Security notes, deployment info
+- **Frontend**: Next.js with TypeScript and Tailwind
 
 ### 🚀 Next When I Get Time
 - Batch processing for multiple repos
-- User accounts to save generated posts
-- Template system for different blog styles
-- Analytics dashboard
+- Save generated posts locally
+- Different blog post styles
+- Better error handling
 
 ## Features I've built
 
-### Core functionality
+### Core stuff
 - GitHub repository analysis and content extraction
 - AI-powered blog post generation with multiple providers
-- Real-time WebSocket updates during processing
-- Modern web interface with drag-and-drop feel
+- Real-time updates during processing
+- Basic web interface
 
 ### AI Integration
-- **Groq**: Fast and free (primary choice)
-- **HuggingFace**: Also free, good backup option
-- **OpenAI**: Premium quality when you need it
+- **Groq**: Fast and free (main choice)
+- **HuggingFace**: Also free, good backup
+- **OpenAI**: When you need better quality
 - **Automatic fallback**: Switches providers if one fails
-
-### Frontend polish
-- Next.js 14 with TypeScript for reliability
-- 3D floating particles animation (subtle, not overdone)
-- Glassmorphism design with clean aesthetics
-- Real-time progress tracking
-- Mobile-responsive design
-
-### Production features
-- Docker setup with health checks
-- Security headers and CORS configuration  
-- Environment-based configuration
-- Comprehensive error handling
-- Deployment documentation for major cloud providers
 
 ### File structure
 ```
@@ -152,9 +138,9 @@ Copy `.env.template` to `.env` and add your keys.
 ## How to use it
 
 ### Web Interface
-1. Open http://localhost:3000
+1. Open http://localhost:8000
 2. Paste any GitHub repository URL
-3. Watch real-time progress as AI analyzes the code
+3. Watch progress as AI analyzes the code
 4. Download the generated blog post
 
 ### Direct API
@@ -163,30 +149,28 @@ Copy `.env.template` to `.env` and add your keys.
 curl http://localhost:8000/health
 
 # Generate blog post
-curl -X POST http://localhost:8000/generate 
-  -H "Content-Type: application/json" 
+curl -X POST http://localhost:8000/generate \
+  -H "Content-Type: application/json" \
   -d '{"repo_url": "https://github.com/user/repo"}'
 ```
 
 ## Future ideas (when I get time)
 
 - [ ] **Batch processing**: Analyze multiple repos at once
-- [ ] **User accounts**: Save and organize generated posts  
-- [ ] **Custom templates**: Different blog post styles and formats
-- [ ] **Social integration**: Direct publishing to Medium, Dev.to, etc.
-- [ ] **Analytics**: Track which repos generate the most engaging posts
-- [ ] **Mobile app**: Native iOS/Android version
-- [ ] **Collaboration**: Team workspaces for shared blog generation
-- [ ] **SEO optimization**: Automatic meta descriptions and tags
-- [ ] **Content scheduling**: Plan and schedule blog post releases
-- [ ] **Version tracking**: Compare different generated versions
+- [ ] **Save posts locally**: Keep generated content organized
+- [ ] **Different templates**: Technical posts vs beginner-friendly styles
+- [ ] **Azure AI Foundry integration**: Seems like a better option for quality
+- [ ] **Direct publishing**: Push to Medium, Dev.to automatically
+- [ ] **Better error messages**: More helpful feedback when things fail
+- [ ] **Custom prompts**: Let users adjust the writing style
+- [ ] **Export options**: PDF, HTML, different markdown formats
 
 ## Tech stack
 
 **Backend**: Python 3.13, FastAPI, WebSocket, asyncio  
-**Frontend**: Next.js 14, TypeScript, Tailwind CSS, Framer Motion  
+**Frontend**: Next.js 14, TypeScript, Tailwind CSS  
 **AI**: Groq, HuggingFace Inference API, OpenAI GPT models  
-**Infrastructure**: Docker, multi-stage builds, health checks  
+**Infrastructure**: Docker, basic health checks  
 **Security**: CORS, security headers, environment variables  
 
 ## Development
@@ -206,23 +190,20 @@ The `ai_providers.py` module uses a provider pattern. To add a new AI service:
 4. Update environment template with required variables
 
 ### Docker deployment
-The app includes production-ready Docker configuration:
-- Multi-stage builds for optimization
+The app includes Docker configuration:
+- Basic container setup
 - Health check endpoints
 - Environment-based configuration
-- Both development and production compose files
 
 ## Why I built this
 
-Was constantly having to write blog posts about my projects and realized I was basically describing what the code already showed. Figured AI could do this automatically and probably better than I could.
+Was putting off writing a blog post about one of my projects because I kept thinking "I'll just end up describing what's already in the README and code comments anyway." Then I thought - why not let AI read through everything and write the blog post for me?
 
-The multi-provider setup came from getting rate limited and wanting reliable fallbacks. Started with just OpenAI but added Groq and HuggingFace since they're free and work really well.
-
-The frontend got more polished because I was learning Next.js 14 at the time and wanted to try out the new features. The WebSocket integration makes it feel much more interactive.
+Started with just OpenAI but kept hitting rate limits during testing, so I added Groq and HuggingFace since they're free and work pretty well. The frontend started as basic HTML but I was learning Next.js at the time so decided to make it look decent.
 
 ## Contributing
 
-Feel free to fork and improve! This started as a personal tool but happy to make it better.
+Feel free to fork and improve! This is just a personal project but happy to make it better.
 
 Some areas that could use work:
 - Better error messages for users
